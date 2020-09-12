@@ -1,0 +1,27 @@
+version: '3.0'
+
+services:
+  
+  #Веб-приложение
+  family-web-app:
+    build: ./web-app
+    image: family/web-app:latest
+    container_name: web-app
+    restart: always
+    ports:
+      - 8080:80
+    networks:
+      - family-network
+
+  #База знаний (онтология)
+  family-ontology:
+    build: ./ontology
+    image: family/ontology:latest
+    container_name: ontology
+    ports:
+      - 8081:80
+    networks:
+      - family-network
+
+networks:
+  family-network: {}
