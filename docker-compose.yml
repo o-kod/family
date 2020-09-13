@@ -1,6 +1,8 @@
 version: '3'
 
 services:
+
+  # Веб-приложение
   php-fpm:
     build:
       context: ./php-fpm
@@ -22,15 +24,30 @@ services:
       - "8080:80"
       - "443:443"
 
-  #База знаний (онтология)
+  # База знаний (онтология)
   family-ontology:
     build: ./ontology
     image: family/ontology:latest
     container_name: ontology
+    volumes:
+      - ./ontology-data:/ontology-data
     ports:
       - 8081:80
     networks:
       - family-network
 
+  # Редактор онтологий
+  ontology-editor:
+    build: ./ontology-editor
+    image: family/ontology-editor:latest
+    container_name: ontology-editor
+    volumes:
+      - ./fuseki:/fuseki
+    environment:
+      - ADMIN_PASSWORD=1
+    ports:
+      - 3030:3030
+    networks:
+      - family-network
 networks:
   family-network: {}
