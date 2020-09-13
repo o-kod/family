@@ -41,8 +41,8 @@ services:
     build: ./ontology-editor
     image: family/ontology-editor:latest
     container_name: ontology-editor
-    volumes:
-      - ./fuseki:/fuseki
+    #volumes:
+    #  - ./fuseki:/fuseki
     environment:
       - ADMIN_PASSWORD=1
     ports:
