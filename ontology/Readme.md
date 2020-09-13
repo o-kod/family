@@ -8,3 +8,35 @@
 <pre>
 http://local-docker-ip:8081/get_privileges?is_retired=1&is_veteran=1
 </pre>
+
+Ответ на запрос.
+
+<pre>
+[
+    {
+        "name": "ЕДВ на проезд (семья с родителем-пенсионером)",
+        "value": "270 руб./мес.",
+        "url": "https://www.gosuslugi.ru/situation/social_assistance/monthly_payments"
+    },
+    {
+        "name": "Пенсия (семья с родителем-пенсионером)",
+        "value": "15594 руб./мес.",
+        "url": "https://www.gosuslugi.ru/situation/disabled_person/disabled_disabled"
+    },
+    {
+        "name": "Компенсация на оплату ЖКУ (семья с ветераном труда РФ)",
+        "value": "853 руб./мес.",
+        "url": "https://www.gosuslugi.ru/72091/1/info"
+    },
+    {
+        "name": "Пенсия (семья с ветераном труда РФ)",
+        "value": "15594 руб./мес.",
+        "url": ""
+    },
+    {
+        "name": "Ежемесячная денежная выплата (семья с ветераном труда РФ)",
+        "value": "713 руб./мес.",
+        "url": "https://www.gosuslugi.ru/111447/2/info"
+    }
+]
+</pre>
