@@ -241,6 +241,58 @@ class FamilyPayments extends Payments
 
     }
 
+    private function getCurlData($isRetired, $isVeteran) : array {
+        $retVet = [
+            'family_retired_payment_travel_month' => 0,
+            'family_retired_payment_travel' => 0,
+            'family_retired_payment_month' => 0,
+            'family_retired_payment' => 0,
+            'family_veteran_payment_hc_month' => 0,
+            'family_veteran_payment_hc' => 0,
+            'family_veteran_payment_month' => 0,
+            'family_veteran_payment' => 0,
+            'family_veteran_payment_pension_benefit_month' => 0,
+            'family_veteran_payment_pension_benefit' => 0,
+        ];
+
+        try {
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, 'http://ontology/get_privileges?is_retired='.$isRetired.'&is_veteran='.$isVeteran);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+            $response = curl_exec($ch);
+            if ($response === false) throw new \Exception(curl_error($ch), curl_errno($ch));
+            curl_close($ch);
+
+            $response = json_decode($response, true);
+            foreach ($response as $resp) {
+                if ($resp['name'] == 'ЕДВ на проезд (семья с родителем-пенсионером)') {
+                    $retVet['family_retired_payment_travel_month'] = (int)preg_replace('/[^0-9]/', '', $resp['value']);
+                    $retVet['family_retired_payment_travel'] = $retVet['family_retired_payment_travel_month'] * 12;
+                }
+                if ($resp['name'] == 'Пенсия (семья с родителем-пенсионером)') {
+                    $retVet['family_retired_payment_month'] = (int)preg_replace('/[^0-9]/', '', $resp['value']);
+                    $retVet['family_retired_payment'] = $retVet['family_retired_payment_month'] * 12;
+                }
+                if ($resp['name'] == 'Компенсация на оплату ЖКУ (семья с ветераном труда РФ)') {
+                    $retVet['family_veteran_payment_hc_month'] = (int)preg_replace('/[^0-9]/', '', $resp['value']);
+                    $retVet['family_veteran_payment_hc'] = $retVet['family_veteran_payment_hc_month'] * 12;
+                }
+                if ($resp['name'] == 'Ежемесячная денежная выплата (семья с ветераном труда РФ)') {
+                    $retVet['family_veteran_payment_month'] = (int)preg_replace('/[^0-9]/', '', $resp['value']);
+                    $retVet['family_veteran_payment'] = $retVet['family_veteran_payment_month'] * 12;
+                }
+                if ($resp['name'] == 'Пенсия (семья с ветераном труда РФ)') {
+                    $retVet['family_veteran_payment_pension_benefit_month'] = (int)preg_replace('/[^0-9]/', '', $resp['value']);
+                    $retVet['family_veteran_payment_pension_benefit'] = $retVet['family_veteran_payment_pension_benefit_month'] * 12;
+                }
+            }
+            return $retVet;
+        } catch (Exception $e) {
+            return $retVet;
+        }
+    }
+
     public function getPayments() : array {
         $oneManFamilySalary = $this->getFamilySalary();
 
@@ -283,19 +335,8 @@ class FamilyPayments extends Payments
             'family_disabled_payment_status_month' => $this->getDisabledPaymentStatus($this->familyInfo['is_disabled'])/12,
 
 
-
-            'family_veteran_payment' => $this->getVeteranPayment($this->familyInfo['is_veteran']),
-            'family_veteran_payment_month' => $this->getVeteranPayment($this->familyInfo['is_veteran'])/12,
-
-            'family_veteran_payment_pension_benefit' => $this->getVeteranPaymentPensionBenefit($this->familyInfo['is_veteran']),
-            'family_veteran_payment_pension_benefit_month' => $this->getVeteranPaymentPensionBenefit($this->familyInfo['is_veteran'])/12,
-
             'family_veteran_payment_status' => $this->getVeteranPaymentStatus($this->familyInfo['is_veteran']),
             'family_veteran_payment_status_month' => $this->getVeteranPaymentStatus($this->familyInfo['is_veteran'])/12,
-
-            'family_veteran_payment_hc' => $this->getVeteranPaymentHc($this->familyInfo['is_veteran']),
-            'family_veteran_payment_hc_month' => $this->getVeteranPaymentHc($this->familyInfo['is_veteran'])/12,
-
 
 
             'family_war_veteran_payment' => $this->getWarVeteranPayment($this->familyInfo['is_war_veteran']),
@@ -316,18 +357,8 @@ class FamilyPayments extends Payments
             'family_war_veteran_payment_hc' => $this->getWarVeteranPaymentHc($this->familyInfo['is_war_veteran']),
             'family_war_veteran_payment_hc_month' => $this->getWarVeteranPaymentHc($this->familyInfo['is_war_veteran'])/12,
 
-
-
-            'family_retired_payment' => $this->getRetiredPayment($this->familyInfo['is_retired']),
-            'family_retired_payment_month' => $this->getRetiredPayment($this->familyInfo['is_retired'])/12,
-
             'family_retired_payment_pension_benefit' => $this->getRetiredPaymentPensionBenefit($this->familyInfo['is_retired']),
             'family_retired_payment_pension_benefit_month' => $this->getRetiredPaymentPensionBenefit($this->familyInfo['is_retired'])/12,
-
-            'family_retired_payment_travel' => $this->getRetiredPaymentTravel($this->familyInfo['is_retired']),
-            'family_retired_payment_travel_month' => $this->getRetiredPaymentTravel($this->familyInfo['is_retired'])/12,
-
-
 
             'family_so_veteran_payment' => $this->getSoVeteranPayment($this->familyInfo['is_so_veteran']),
             'family_so_veteran_payment_month' => $this->getSoVeteranPayment($this->familyInfo['is_so_veteran'])/12,
@@ -338,6 +369,33 @@ class FamilyPayments extends Payments
             'family_so_veteran_payment_status' => $this->getSoVeteranPaymentStatus($this->familyInfo['is_so_veteran']),
             'family_so_veteran_payment_status_month' => $this->getSoVeteranPaymentStatus($this->familyInfo['is_so_veteran'])/12,
         ];
+
+        $retVet = [
+            'family_retired_payment_travel_month' => 0,
+            'family_retired_payment_travel' => 0,
+            'family_retired_payment_month' => 0,
+            'family_retired_payment' => 0,
+            'family_veteran_payment_hc_month' => 0,
+            'family_veteran_payment_hc' => 0,
+            'family_veteran_payment_month' => 0,
+            'family_veteran_payment' => 0,
+            'family_veteran_payment_pension_benefit_month' => 0,
+            'family_veteran_payment_pension_benefit' => 0,
+        ];
+
+        $retVet = $this->getCurlData($this->familyInfo['is_retired'], $this->familyInfo['is_veteran']);
+        $paymentsResult['family_retired_payment_travel_month'] = $retVet['family_retired_payment_travel_month'];
+        $paymentsResult['family_retired_payment_travel'] = $retVet['family_retired_payment_travel'];
+        $paymentsResult['family_retired_payment_month'] = $retVet['family_retired_payment_month'];
+        $paymentsResult['family_retired_payment'] = $retVet['family_retired_payment'];
+        $paymentsResult['family_veteran_payment_hc_month'] = $retVet['family_veteran_payment_hc_month'];
+
+        $paymentsResult['family_veteran_payment_hc'] = $retVet['family_veteran_payment_hc'];
+        $paymentsResult['family_veteran_payment_month'] = $retVet['family_veteran_payment_month'];
+        $paymentsResult['family_veteran_payment'] = $retVet['family_veteran_payment'];
+        $paymentsResult['family_veteran_payment_pension_benefit_month'] = $retVet['family_veteran_payment_pension_benefit_month'];
+        $paymentsResult['family_veteran_payment_pension_benefit'] = $retVet['family_veteran_payment_pension_benefit'];
+
         return $paymentsResult;
     }
 

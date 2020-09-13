@@ -8,6 +8,8 @@ services:
       context: ./php-fpm
     volumes:
       - ./web-app:/var/www
+    networks:
+      - family-network
 
   nginx:
     build:
@@ -23,6 +25,8 @@ services:
     ports:
       - "8080:80"
       - "443:443"
+    networks:
+      - family-network
 
   # База знаний (онтология)
   family-ontology:
@@ -50,4 +54,4 @@ services:
     networks:
       - family-network
 networks:
-  family-network: {}
+  family-network:
