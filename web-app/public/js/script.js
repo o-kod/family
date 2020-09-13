@@ -636,11 +636,9 @@ $(document).ready(function() {
                 $('.arm-edu-elements .overall_value_area').text(eduOverallValue);
 
                 let taxes = parseInt(data['tax_car']) + parseInt(data['tax_estate']) + parseInt(data['tax_salary']) + parseInt(data['tax_insurance']);
-                // $('.arm-result-value .arm-result-value-tax').text(taxes);
                 $('.arm-result-value-tax').text(taxes);
 
                 let overallValue = socOverallValue + healthOverallValue + eduOverallValue;
-                // $('.arm-result-value .arm-result-value-overall').text(overallValue);
                 $('.arm-result-value-overall').text(overallValue);
 
                 createChart(getChartData({
@@ -684,29 +682,6 @@ $(document).ready(function() {
             formResult.labels.push('Здравоохранение')
             datasetData.push(Math.trunc(formData.health));
             backgroundColorData.push('#F6705D');
-        }
-        if (formData.tax_car > 0) {
-            formResult.labels.push('Транспортный налог')
-            datasetData.push(Math.trunc(formData.tax_car*-1));
-            backgroundColorData.push('#338cca');
-        }
-
-        if (formData.tax_salary > 0) {
-            formResult.labels.push('Налог на доходы физических лиц')
-            datasetData.push(Math.trunc(formData.tax_salary*-1));
-            backgroundColorData.push('#338cca');
-        }
-
-        if (formData.tax_estate > 0) {
-            formResult.labels.push('Налог на имущество')
-            datasetData.push(Math.trunc(formData.tax_estate*-1));
-            backgroundColorData.push('#338cca');
-        }
-
-        if (formData.tax_insurance > 0) {
-            formResult.labels.push('Страховые взносы')
-            datasetData.push(Math.trunc(formData.tax_insurance*-1));
-            backgroundColorData.push('#338cca');
         }
 
         if (datasetData.length > 0) {
@@ -783,7 +758,6 @@ $(document).ready(function() {
         $('.arm-show-hide').removeClass('arm-open');
         $('.arm-s-h-2').removeClass('open-arm')
         $('.arm-soc').click();
-        // $('#exampleModalXl').modal('show');
         let formData = getFormData();
         $('.arm-input-data-wrapper').hide();
         $('.arm-output-data-wrapper').show();
@@ -796,8 +770,9 @@ $(document).ready(function() {
     });
 
 
-    $('#content-form').on('submit', function(e) {
-        e.preventDefault();
+    // $('#content-form').on('submit', function(e) {
+    $('.citizen-info-element-calculate').on('click', function(e) {
+        // e.preventDefault();
         $('.error').text('');
         let twins = $('.twins input:checked');
         for (let i = 0; i < twins.length; i++) {
@@ -819,10 +794,11 @@ $(document).ready(function() {
 
         $('.arm-open-wrap').hide();
         $('.arm-show-hide').removeClass('arm-open');
+        $('.arm-s-h-2').removeClass('open-arm')
         $('.arm-soc').click();
         let formData = getFormData();
-        $('#exampleModalXl').modal('show');
-
+        $('.arm-input-data-wrapper').hide();
+        $('.arm-output-data-wrapper').show();
     });
 
     $('#modal-soc').on('click', function() {
@@ -921,14 +897,12 @@ $(document).ready(function() {
                     chart.data.datasets[0].data.splice(i, 1);
                     chart.data.datasets[0].backgroundColor.splice(i, 1);
                     $('.arm-cult-elements .overall_value_area').text(0);
-                    // $('.arm-result-value .arm-result-value-overall').text(parseInt($('.arm-result-value .arm-result-value-overall').text()) - parseInt(value));
                     $('.arm-result-value-overall').text(parseInt($('.arm-result-value-overall').text()) - parseInt(value));
                     chart.update();
                     break;
                 } else {
                     chart.data.datasets[0].data[i] -= value;
                     $('.arm-cult-elements .overall_value_area').text(chart.data.datasets[0].data[i]);
-                    // $('.arm-result-value .arm-result-value-overall').text(parseInt($('.arm-result-value .arm-result-value-overall').text()) - parseInt(value));
                     $('.arm-result-value-overall').text(parseInt($('.arm-result-value-overall').text()) - parseInt(value));
                     chart.update();
                 }
@@ -943,7 +917,6 @@ $(document).ready(function() {
             if (chart.data.labels[i] == label) {
                 chart.data.datasets[0].data[i] += value;
                 $('.arm-cult-elements .overall_value_area').text(chart.data.datasets[0].data[i]);
-                // $('.arm-result-value .arm-result-value-overall').text(parseInt($('.arm-result-value .arm-result-value-overall').text()) + parseInt(value));
                 $('.arm-result-value-overall').text(parseInt($('.arm-result-value-overall').text()) + parseInt(value));
                 chart.update();
                 flag = false;
@@ -954,7 +927,6 @@ $(document).ready(function() {
             chart.data.labels.push(label);
             chart.data.datasets[0].data.push(Math.trunc(value));
             $('.arm-cult-elements .overall_value_area').text(Math.trunc(value));
-            // $('.arm-result-value .arm-result-value-overall').text(parseInt($('.arm-result-value .arm-result-value-overall').text()) + parseInt(value));
             $('.arm-result-value-overall').text(parseInt($('.arm-result-value-overall').text()) + parseInt(value));
             chart.data.datasets[0].backgroundColor.push("#F6705D");
             chart.update();

@@ -62,7 +62,6 @@ body:before {
 	background: #0065CE;
 }
 .arm-navigation div {
-	/*padding: 35px 16px 38px 16px;*/
 	padding: 5px 16px 8px 16px;
 	font-family: 'Segoe UI';
 	font-style: normal;
@@ -162,13 +161,11 @@ table.arm-table-res tbody {
 }
 .arm-result {
 	background: #fff;
-	/*margin: 35px -39px 0 -39px;*/
 	padding: 20px 41px;
 	overflow: hidden
 }
 .arm-chart-wrap {
 	width: 100%;
-	/*clear: both;*/
 	overflow: hidden
 }
 .arm-chart-title {
@@ -288,13 +285,16 @@ table.arm-table-res tbody {
 	margin: 100px 120px 40px 120px;
 }
 
+.arm-header-button {
+	margin: 0px 120px 0px 120px;
+}
+
 .arm-main {
-	/*margin: 100px 120px 40px 120px;*/
 	border-radius: 5px;
 	overflow-x: hidden;
 	overflow-y: auto;
-	max-height: calc(100vh - 250px);
-	height: calc(100vh - 250px);
+	max-height: calc(100vh - 320px);
+	height: calc(100vh - 320px);
 	background: #F5F8FF;
 	position: relative;
 	width: 100%;
@@ -316,15 +316,6 @@ table.arm-table-res tbody {
 	min-width: 31px;
 	min-height: 86px;
 	background-image: url(i/right-arrow.svg);
-	position: relative;
-	cursor: pointer;
-}
-
-.arm-input {
-	margin: 100px 0px 40px 50px;
-	min-width: 31px;
-	min-height: 86px;
-	background-image: url(i/left-arrow.svg);
 	position: relative;
 	cursor: pointer;
 }
@@ -360,7 +351,6 @@ table.arm-table-res tbody {
 	font-weight: 350;
 	font-size: 18px;
 	line-height: 24px;
-	/* identical to box height */
 	text-align: right;
 	color: #FFFFFF;
 	cursor: pointer;
@@ -408,67 +398,27 @@ table.arm-table-res tbody {
 	padding: 20px !important;
 }
 
+.citizen-info-element-calculate {
+	padding: 20px!important;
+}
+
+.citizen-info-element-return {
+	padding: 20px!important;
+}
 
 .citizen-info-element-children {
 	background: #FFFFFF;
-	/*box-shadow: 0px 3px 10px rgba(27, 95, 167, 0.3);*/
 	border-radius: 5px;
 	margin: 25px 0;
 	padding: 20px !important;
 }
 
-.citizen-info-element-little-font-size {
-   /* height: 100px;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.3rem;*/
-}
 
 .citizen-family-category-header {
     text-transform: uppercase;
     font-weight: 600;
 }
-/*
-#citizen-payment {
-    background-color: #bed3dd;
-}
 
-#married {
-    background-color: #cbe5eb;
-}
-
-#maternity-leave {
-    background-color: #cbe5eb;
-}
-
-#partner-payment {
-    background-color: #cbe5eb;
-}
-
-#is-children {
-    background-color: #a2d0e9;
-}
-
-#children {
-    background-color: #a2d0e9;
-}
-
-#family-category {
-    background-color: #bed3dd;
-}
-
-#tax-category {
-    background-color: #cbe5eb;
-}
-
-#commit{
-    background-color: #bed3dd;
-}
-
-#tax {
-    background-color: #cbe5eb;
-}
-*/
 .payment {
     border-top: none;
     border-left: none;
@@ -501,11 +451,9 @@ input[type=checkbox] {
 
 
 .custom-control-label {
-	/*position: static;*/
 	cursor: pointer;
 	width: 2rem;
 	height: 2rem;
-	/*top: -.125rem;*/
 	left: 0;
 }
 
@@ -560,7 +508,6 @@ input[type=checkbox] {
 }
 
 .custom-control-input-green:focus:not(:checked)~.custom-control-label::before {
-	/*transform: scale(2);*/
 	border-color: #0065CE !important;
 	box-sizing: initial;
 }
@@ -574,7 +521,6 @@ input[type=checkbox] {
 
 #family-category .btn {
     white-space:normal;
-   /* font-size: 12px;*/
 }
 
 #family-category label {
@@ -584,19 +530,10 @@ input[type=checkbox] {
 }
 
 .family-category-buttons .btn {
-  /*  border-radius: 0 !important;
-    margin-left: 0 !important;*/
     height: 50px;
 }
-/*
-.family-category-buttons > .btn-group .btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group, .btn-group-vertical .btn+.btn, .btn-group-vertical .btn+.btn-group, .btn-group-vertical .btn-group+.btn, .btn-group-vertical .btn-group+.btn-group{
-    border-radius: 0 !important;
-    margin-left: 0 !important;
-}
-*/
 
 .citizen-param-picker {
-   /* font-size: 10px;*/
    text-transform: uppercase
 }
 
@@ -650,7 +587,6 @@ input[type=checkbox] {
 }
 
 .arm-s-elem {
-	/*text-transform: uppercase;*/
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -673,7 +609,6 @@ input[type=checkbox] {
 }
 
 .arm-input-data-wrapper {
-	/*display: none;*/
 }
 
 .white-background.active {
