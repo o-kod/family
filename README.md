@@ -17,9 +17,9 @@ docker-compose up -d --build
 </pre>
 
 После запуска будут развётнуты приложения:
-http://<local-docker-ip>:8080/ - __клиентское веб-приложение__
-http://<local-docker-ip>:8081/ - сервис для работы с онтологиями формате RDF
-http://<local-docker-ip>:3030/ - редактор онтологий Fuseki
+http://[local-docker-ip]:8080/ - __клиентское веб-приложение__
+http://[local-docker-ip]:8081/ - сервис для работы с онтологиями формате RDF
+http://[local-docker-ip]:3030/ - редактор онтологий Fuseki
 где local-docker-ip - ip-адрес машины с Docker'ом.
 
 ## Сервис для работы с онтологиями
