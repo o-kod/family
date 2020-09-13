@@ -16,7 +16,7 @@ git clone https://github.com/o-kod/family
 docker-compose up -d --build
 </pre>
 
-После запуска будут развётнуты приложения:
+После запуска будут развётнуты приложения:<br>
 http://local-docker-ip:8080/ - __клиентское веб-приложение__<br>
 http://local-docker-ip:8081/ - сервис для работы с онтологиями формате RDF<br>
 http://local-docker-ip:3030/ - редактор онтологий Fuseki<br>
