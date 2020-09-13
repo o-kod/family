@@ -1,0 +1,1407 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сервис предоставления адресной социальной поддержки гражданам{% endblock %}
+
+{% block body %}
+    <div class="arm-input-data-wrapper">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="arm-header-main">
+                <div>
+                    <div class="content-header d-flex align-items-center">Данные о гражданине и его семье</div>
+{#                    <div class="content-header d-flex align-items-center">Данные о гражданине и его семье <div class="reload">СБРОС</div></div>#}
+                    <div class="arm-main">
+
+
+                    <form id="content-form">
+                        <div class="d-flex flex-column bd-highlight mb-3">
+                            <div class="bd-highlight d-flex citizen-info-element align-items-center" id="citizen-payment">
+                                <div class="col-3 arm-s-elem">УРОВЕНЬ ЕЖЕМЕСЯЧНОГО ДОХОДА ГРАЖДАНИНА</div>
+                                <div class="col-3 input-group">
+                                    <input type="text" class="payment form-control" onkeypress="return isNumberKey(event)">
+                                    <div class="input-group-append d-flex align-items-center">
+                                        <span class="input-group-text">Р/Мес</span>
+                                    </div>
+                                </div>
+                                <div class="col-1 input-group citizen-param-picker arm-s-elem">
+                                    Студент
+                                </div>
+                                <div class="col-1 input-group is_student d-flex justify-content-center custom-control custom-checkbox custom-checkbox-green">
+                                    <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckStudent1">
+                                    <label class="custom-control-label" for="customCheckStudent1"></label>
+
+                                </div>
+                                <div class="col-1 input-group citizen-param-picker arm-s-elem">
+                                    не работает
+                                </div>
+                                <div class="col-1 input-group not_working d-flex justify-content-center custom-control custom-checkbox custom-checkbox-green">
+                                    <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckNotWorking1">
+                                    <label class="custom-control-label" for="customCheckNotWorking1"></label>
+                                </div>
+                                <div class="col-1 input-group citizen-param-picker arm-s-elem">
+                                    потерял работу после 01.03.2020
+                                </div>
+                                <div class="col-1 input-group is_lost_covid d-flex justify-content-center custom-control custom-checkbox custom-checkbox-green">
+                                    <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckCovid1">
+                                    <label class="custom-control-label" for="customCheckCovid1"></label>
+                                </div>
+
+                            </div>
+                            <div class="bd-highlight d-flex citizen-info-element justify-content-center align-items-center" >
+                                <div class="d-flex flex-column" style="width: 100%">
+                                    <div class="d-flex justify-content-center align-items-center" id="married">
+                                        <div class="col-3 arm-s-elem">Cупруг/супруга</div>
+                                        <div class="col-1 d-flex justify-content-center align-items-center custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1"></label>
+                                        </div>
+                                        <div class="col-8"></div>
+                                    </div>
+                                    <div id="partner-payment" class="partner-row" style="display: none">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="col-3 arm-s-elem">УРОВЕНЬ ЕЖЕМЕСЯЧНОГО ДОХОДА ГРАЖДАНИНА СУПРУГА/СУПРУГИ</div>
+                                            <div class="col-3 input-group">
+                                                <input type="text" class="payment form-control" onkeypress="return isNumberKey(event)">
+                                                <div class="input-group-append  d-flex align-items-center">
+                                                    <span class="input-group-text arm-s-elem">Р/Мес</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-1 input-group citizen-param-picker arm-s-elem custom-control custom-checkbox custom-checkbox-green">
+                                                Студент
+                                            </div>
+                                            <div class="col-1 input-group is_student d-flex justify-content-center custom-control custom-checkbox custom-checkbox-green">
+                                                <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckStudent2">
+                                                <label class="custom-control-label" for="customCheckStudent2"></label>
+                                            </div>
+                                            <div class="col-1 input-group citizen-param-picker arm-s-elem">
+                                                не работает
+                                            </div>
+                                            <div class="col-1 input-group not_working  custom-control custom-checkbox custom-checkbox-green">
+                                                <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckNotWorking2">
+                                                <label class="custom-control-label" for="customCheckNotWorking2"></label>
+                                            </div>
+                                            <div class="col-1 input-group citizen-param-picker arm-s-elem">
+                                                потерял работу после 01.03.2020
+                                            </div>
+                                            <div class="col-1 input-group is_lost_covid d-flex justify-content-center custom-control custom-checkbox custom-checkbox-green">
+                                                <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckCovid2">
+                                                <label class="custom-control-label" for="customCheckCovid2"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bd-highlight d-flex flex-column citizen-info-element" id="is-children">
+
+                                <div class="d-flex align-items-center">
+                                    <div class="col-3 arm-s-elem">Дети</div>
+                                    <div class="col-1 d-flex justify-content-center align-items-center custom-control custom-checkbox custom-checkbox-green">
+                                        <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckIsChildren">
+                                        <label class="custom-control-label" for="customCheckIsChildren"></label>
+                                    </div>
+                                    <div class="col-4 d-flex align-items-center justify-content-center">
+                                        <div class="col-12 btn-group btn-group-toggle children-count" data-toggle="buttons" style="display: none">
+                                            <label class="btn btn-outline-primary white-background col-2 active">
+                                                <input type="radio" checked="" name="children-radio" id="children1" autocomplete="off" value="1">1
+                                            </label>
+                                            <label class="btn btn-outline-primary white-background col-2">
+                                                <input type="radio" name="children-radio" id="children2" autocomplete="off" value="2">2
+                                            </label>
+                                            <label class="btn btn-outline-primary white-background col-2">
+                                                <input type="radio" name="children-radio" id="children3" autocomplete="off" value="3">3
+                                            </label>
+                                            <label class="btn btn-outline-primary white-background col-2">
+                                                <input type="radio" name="children-radio" id="children4" autocomplete="off" value="4">4
+                                            </label>
+                                            <label class="btn btn-outline-primary white-background col-2">
+                                                <input type="radio" name="children-radio" id="children5" autocomplete="off" value="5">5
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4"></div>
+                                </div>
+                                <div class="bd-highlight arm-s-elemn" id="children">
+                                </div>
+                                <div class="error">
+                                </div>
+                            </div>
+
+                            <div class="p-2 bd-highlight d-flex flex-column citizen-info-element arm-s-elem" id="family-category">
+                                <div class="d-flex"><div class="col-3">Категория семьи</div></div>
+                                <div class="d-flex family-category-buttons align-items-center justify-content-center">
+                                    <div class="btn-group-toggle d-flex container-fluid row" data-toggle="buttons">
+
+                                        <label class="btn btn-outline-primary white-background col-4 d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="is_retired" autocomplete="off"> Родители - пенсионеры
+                                        </label>
+                                        <label class="btn btn-outline-primary white-background col-4 d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="is_disabled" autocomplete="off"> Семья с инвалидом
+                                        </label>
+                                        <label class="btn btn-outline-primary white-background col-4 d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="is_child_disabled" autocomplete="off"> Семья с ребенком-инвалидом
+                                        </label>
+                                        <label class="btn btn-outline-primary white-background col-4 d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="is_war_veteran" autocomplete="off"> Семья с ветераном боевых действий
+                                        </label>
+                                        <label class="btn btn-outline-primary white-background col-4 d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="is_veteran" autocomplete="off"> Семья с ветераном труда РФ
+                                        </label>
+                                        <label class="btn btn-outline-primary white-background col-4 d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="is_so_veteran" autocomplete="off"> Семья с ветераном труда СО
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bd-highlight d-flex flex-column citizen-info-element arm-s-elem" id="tax-category">
+                                <div class="d-flex">
+                                    <div class="col-3">Налоги</div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="col-5 d-flex align-items-center" id="car-power">
+                                        <div class="col-6 input-group citizen-param-picker">
+                                            МОЩНОСТЬ А/М
+                                        </div>
+                                        <div class="col-6 input-group not_working d-flex align-items-center">
+                                            <input type="text" class="payment form-control" onkeypress="return isNumberKey(event)">
+                                            <div class="input-group-append d-flex align-items-center">
+                                                <span class="input-group-text">л/c</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-6 d-flex align-items-center" id="estate-tax">
+                                        <div class="col-7 input-group citizen-param-picker">
+                                            НАЛОГ НА ИМУЩЕСТВО (ВКЛЮЧАЯ ЗЕМЕЛЬНЫЙ НАЛОГ)
+                                        </div>
+                                        <div class="col-5 input-group is_lost_covid d-flex align-items-center">
+                                            <input type="text" class="payment form-control" onkeypress="return isNumberKey(event)">
+                                            <div class="input-group-append d-flex align-items-center">
+                                                <span class="input-group-text">Р</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <div class="arm-calculate">
+            </div>
+        </div>
+    </div>
+    <div class="arm-output-data-wrapper">
+        <div class="d-flex align-items-center justify-content-center">
+            <div class="arm-input">
+            </div>
+            <div class="arm-main-result arm-header-main">
+                <div class="row arm-row">
+                    <div class="col-2 arm-navigation-wrap">
+                        <div class="arm-navigation arm-soc arm-active">
+                            <div>
+                                <img src= {{ asset("/css/i/1.png") }} alt=""/>
+                                Социальная сфера
+                            </div>
+                        </div>
+                        <div class="arm-navigation arm-helth">
+                            <div>
+                                <img src= {{ asset("/css/i/2.png") }} alt=""/>
+                                Здравоохранение
+                            </div>
+                        </div>
+                        <div class="arm-navigation arm-edu">
+                            <div>
+                                <img src= {{ asset("/css/i/3.png") }} alt=""/>
+                                Образование
+                            </div>
+                        </div>
+                        <div class="arm-navigation arm-cult">
+                            <div>
+                                <img src= {{ asset("/css/i/4.png") }} alt=""/>
+                                Культура и спорт
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-10 arm-content">
+                        <div class="arm-content-inner arm-soc-elements arm-element">
+                            <h2 class="arm-content-title">Выплаты в социальной сфере</h2>
+
+                            <div class="arm-open-wrap-2">
+                                <div class="row sp-row" id="children_payments">
+                                    <div class="col-8">
+                                        <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
+                                            <span class="arm-s-h-2" name="children-payments"></span>
+                                            <span class="arm-s-h-2-text">Меры социальной поддержки семей с детьми</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_month_header"></span>
+                                    </div>
+                                    <div class="col-2 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_header"></span>
+                                    </div>
+                                </div>
+                                <div class="arm-open-wrap" name="children-payments" style="display: none">
+                                    <div class="row sp-row sp-row-more-info" id="monthly_children_payment_year">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячное пособие на ребенка</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/119052/3/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="maternity_leave">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячное пособие по уходу за ребенком до 1,5 лет</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/birth/child_payments_and_benefits/infant_monthly_allowance" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="monthly_children_birth_payment_year">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная выплата в связи с рождением ребенка</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/331132/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_inactivity">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячное пособие на детей, не посещающих дошкольную образовательную организацию</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_nutrition">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячное пособие на питание школьника</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/139818/9/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_monthly">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная выплата на ребенка в возрасте от 3 до 7 лет</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/395727/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_activity">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Компенсация части родительской платы в образовательной организации</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/31278/3" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_hc">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная денежная компенсация на оплату коммунальных услуг</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/72091/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_social_month">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Социальная помощь в виде социального пособия</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/27556" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row">
+                                        <div class="col-5 arm-open-wrap-2-inner">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-3">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/мес
+                                        </div>
+                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/год
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="arm-open-wrap-2">
+                                <div class="row sp-row" id="children_payments_once">
+                                    <div class="col-8">
+                                        <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
+                                            <span class="arm-s-h-2" name="children-payments-once"></span>
+                                            <span class="arm-s-h-2-text">Разовые выплаты семьям с детьми</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_month_header"></span>
+                                    </div>
+                                    <div class="col-2 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_header"></span>
+                                    </div>
+                                </div>
+                                <div class="arm-open-wrap" name="children-payments-once" style="display: none">
+                                    <div class="row sp-row sp-row-more-info" id="child_birth">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Единовременное пособие при рождении ребенка</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/birth/child_payments_and_benefits/onetime_childbirth_allowance" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="child_birth_mother_price">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Материнский капитал</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/255439" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="child_birth_regional">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Региональный семейный капитал</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="covid">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Выплата в связи с коронавирусом</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/help/news/2020_04_15_coronovirus_benefits" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="child_payment_beginning_school_year">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежегодная выплата к началу учебного года</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/12113/2/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="child_easter">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежегодная выплата к пасхе</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/126522/3/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="children_social_contract">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Социальная помощь в виде социального контракта</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/194719" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="child_twins_two">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Единовременная выплата на рождение близнецов (двоих)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/19736/4/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="child_twins_three">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Единовременная выплата на рождение близнецов (троих)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/19736/4/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row">
+                                        <div class="col-8 arm-open-wrap-2-inner">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/год
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="arm-open-wrap-2">
+                                <div class="row sp-row" id="soc_payments_option">
+                                    <div class="col-8">
+                                        <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
+                                            <span class="arm-s-h-2" name="soc-payments-option"></span>
+                                            <span class="arm-s-h-2-text">Дополнительные выплаты отдельным категориям семей</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_month_header"></span>
+                                    </div>
+                                    <div class="col-2 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_header"></span>
+                                    </div>
+                                </div>
+                                <div class="arm-open-wrap" name="soc-payments-option" style="display: none">
+                                    <div class="row sp-row sp-row-more-info" id="family_student_payment">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячное пособие на ребенка в студенческой семье</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_child_payment_pension_benefit">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пенсия (семья с ребенком-инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/social_assistance/disability_pension" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_child_payment_hc">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Компенсация на оплату ЖКУ (семья с ребенком-инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/19178/2/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_child_payment_status">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная денежная выплата (семья с ребенком-инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/401393/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_child_payment_care">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Выплата по уходу за ребенком-инвалидом (семья с ребенком-инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/disabled_person/disabled_child_disabled" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_child_payment_month">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Доплата к ежемесячному пособию на ребенка (семья с ребенком-инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_payment_pension_benefit">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пенсия (семья с инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/social_assistance/disability_pension" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_payment_hc">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Компенсация на оплату ЖКУ (семья с инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/72091/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_disabled_payment_status">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная денежная выплата (семья с инвалидом)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_veteran_payment_pension_benefit">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пенсия (семья с ветераном труда РФ)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_veteran_payment_status">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная денежная выплата (семья с ветераном труда РФ)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/111447/2/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_veteran_payment_hc">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Компенсация на оплату ЖКУ (семья с ветераном труда РФ)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/72091/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_war_veteran_payment_pension_benefit">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пенсия (семья с ветераном боевых действий)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_war_veteran_payment_status">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная денежная выплата (семья с ветераном боевых действий)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/60299" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_war_veteran_payment_disabled">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Компенсация в возмещения вреда инвалидам вследствие военной травмы (семья с ветераном боевых действий)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/88464/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_war_veteran_payment_plus">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Доплата к пенсии инвалидам (семья с ветераном боевых действий)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_war_veteran_payment_hc">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Компенсация на оплату ЖКУ (семья с ветераном боевых действий)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/72091/1/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_so_veteran_payment_pension_benefit">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пенсия (семья с ветераном труда Самарской области)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/19337/9/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_so_veteran_payment_status">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Ежемесячная денежная выплата (семья с ветераном труда Самарской области)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/19373/2/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_retired_payment_pension_benefit">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пенсия (семья с родителем-пенсионером)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/disabled_person/disabled_disabled" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="family_retired_payment_travel">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">ЕДВ на проезд (семья с родителем-пенсионером)</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/situation/social_assistance/monthly_payments" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="unemployment">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Пособие по безработице</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/13078/3/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="unemployment_children_payment">
+                                        <div class="col-5">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Выплата на ребенка гражданам, потерявшим работу после 01.03.2020</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text"><a href="https://www.gosuslugi.ru/40421/2/info" target="_blank">Перейти на госуслуги</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-2 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row">
+                                        <div class="col-8 arm-open-wrap-2-inner">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/мес
+                                        </div>
+                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/год
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="arm-content-inner arm-health-elements arm-element">
+                            <h2 class="arm-content-title">Расходы на здравоохранение</h2>
+
+                            <div class="arm-open-wrap-2">
+                                <div class="row sp-row" id="healthcare_all">
+                                    <div class="col-6">
+                                        <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
+                                            <span class="arm-s-h-2" name="healthcare"></span>
+                                            <span class="arm-s-h-2-text">Оказание гражданам медицинской помощи</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_month_header"></span>
+                                    </div>
+                                    <div class="col-3 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_header"></span>
+                                    </div>
+                                </div>
+                                <div class="arm-open-wrap" name="healthcare" style="display: none">
+                                    <div class="row sp-row sp-row-more-info" id="healthcare">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Подушевые нормативы финансирования территориальной программы государственных гарантий бесплатного оказания гражданам медицинской помощи</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row">
+                                        <div class="col-6 arm-open-wrap-2-inner">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/год
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arm-content-inner arm-edu-elements arm-element">
+                            <h2 class="arm-content-title">Расходы на образование</h2>
+
+                            <div class="arm-open-wrap-2">
+                                <div class="row sp-row" id="education_payments">
+                                    <div class="col-6">
+                                        <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
+                                            <span class="arm-s-h-2" name="education-payments"></span>
+                                            <span class="arm-s-h-2-text">Затраты бюджетных средств на обучающегося</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_month_header"></span>
+                                    </div>
+                                    <div class="col-3 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_header"></span>
+                                    </div>
+                                </div>
+                                <div class="arm-open-wrap" name="education-payments" style="display: none">
+                                    <div class="row sp-row sp-row-more-info" id="education_kindergarden">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Воспитанники детских садов</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="education_school">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Обучающиеся общеобразовательных организаций</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="education_ptu">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Студенты профессиональных образовательных организаций</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info" id="education_vuz">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Студенты, обучающиеся в вузах</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value_month"></span>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row">
+                                        <div class="col-6 arm-open-wrap-2-inner">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/год
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arm-content-inner arm-cult-elements arm-element">
+                            <h2 class="arm-content-title">Расходы на культуру и спорт</h2>
+
+                            <div class="arm-open-wrap-2">
+                                <div class="row sp-row" id="sport_payments">
+                                    <div class="col-6">
+                                        <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
+                                            <span class="arm-s-h-2" name="sport-payments"></span>
+                                            <span class="arm-s-h-2-text">Затраты на подготовку одного занимающегося</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_month_header"></span>
+                                    </div>
+                                    <div class="col-3 arm-open-wrap-2-title arm-open-wrap-2-inner text-right">
+                                        <span class="text-nowrap payment_value_header"></span>
+                                    </div>
+                                </div>
+
+                                <div class="arm-open-wrap " name="sport-payments" style="display: none">
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-cycling">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Велосипедный спорт»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportCycling">
+                                            <label class="custom-control-label" for="customCheckSportCycling"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">492560</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-canoe">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Гребля на байдарках и каноэ»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportCanoe">
+                                            <label class="custom-control-label" for="customCheckSportCanoe"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">400750</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-rowing">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Гребной спорт»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportRowing">
+                                            <label class="custom-control-label" for="customCheckSportRowing"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">250240</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-horse">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Конный спорт»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportHorse">
+                                            <label class="custom-control-label" for="customCheckSportHorse"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">461200</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-pingpong">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Настольный теннис»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportPingpong">
+                                            <label class="custom-control-label" for="customCheckSportPingpong"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">270480</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-sailing">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Парусный спорт»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportSailing">
+                                            <label class="custom-control-label" for="customCheckSportSailing"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">367590</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-pentathlon">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по олимпийским видам спорта «Современное пятиборье»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportPentathlon">
+                                            <label class="custom-control-label" for="customCheckSportPentathlon"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">257660</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-athletics">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по спорту лиц с поражением ОДА «Легкая атлетика»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportAthletics">
+                                            <label class="custom-control-label" for="customCheckSportAthletics"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">199470</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-moto">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по неолимпийским видам спорта «Мотоциклетный спорт»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportMoto">
+                                            <label class="custom-control-label" for="customCheckSportMoto"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">676870</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row sp-row-more-info sport" id="sport-tennis">
+                                        <div class="col-6">
+                                            <div class="arm-open-wrap-2-inner">
+                                                <span class="arm-s-h-2-text">Спортивная подготовка по неолимпийским видам спорта «Теннис»</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right custom-control custom-checkbox custom-checkbox-green">
+                                            <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckSportTennis">
+                                            <label class="custom-control-label" for="customCheckSportTennis"></label>
+                                        </div>
+                                        <div class="col-3 arm-open-wrap-2-inner text-right">
+                                            <span class="text-nowrap payment_value">269530</span>
+                                        </div>
+                                    </div>
+                                    <div class="row sp-row">
+                                        <div class="col-6 arm-open-wrap-2-inner">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
+
+                                        </div>
+                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
+                                            ₽/год
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arm-result">
+{#                            <div class="arm-s-h-2 arm-result-show-hide"></div>#}
+                            <div class="arm-chart-wrap">
+                                <div class="row" style="width: 80%; text-align: center">
+                                    <div class="col-6 arm-color-1">
+                                        Налоги: <span class="text-nowrap arm-result-value-tax"></span> <span class="small-text">₽/год</span>
+                                    </div>
+                                    <div class="col-6 arm-color-2">
+                                        Затраты государства: <span class="text-nowrap arm-result-value-overall"></span> <span class="small-text">₽/год</span>
+                                    </div>
+                                </div>
+                                <div class="arm-chart-wrap">
+                                    <div class="modal-content-chart">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+{#                        <div class="arm-content-inner">#}
+{#                            <div class="arm-result d-flex flex-column">#}
+{#                                <div class="arm-result-value container row">#}
+{#                                    <div class="col-6" style="color: #338cca"><span class="arm-result-value-title">Налоги: </span><span class="arm-result-value-tax"></span><span class="currency">₽/год</span></div>#}
+{#                                    <div class="col-6" style="color: #5eca33"><span class="arm-result-value-title">Затраты государства: </span><span class="arm-result-value-overall"></span><span class="currency">₽/год</span></div>#}
+{#                                </div>#}
+{#                                <div class="arm-chart-wrap">#}
+{#                                    <div class="modal-content-chart">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
