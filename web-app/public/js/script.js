@@ -474,32 +474,32 @@ $(document).ready(function() {
             success: function(data) {
                 fd = data;
 
-                $('#monthly_children_payment_year .payment_value').text(data['monthly_children_payment_year']);
-                $('#monthly_children_payment_year .payment_value_month').text(data['monthly_children_payment_year_month']);
+                $('#monthly_children_payment_year .payment_value').text(numberWithCommas(data['monthly_children_payment_year']));
+                $('#monthly_children_payment_year .payment_value_month').text(numberWithCommas(data['monthly_children_payment_year_month']));
 
-                $('#maternity_leave .payment_value').text(data['maternity_leave']);
-                $('#maternity_leave .payment_value_month').text(data['maternity_leave_month']);
+                $('#maternity_leave .payment_value').text(numberWithCommas(data['maternity_leave']));
+                $('#maternity_leave .payment_value_month').text(numberWithCommas(data['maternity_leave_month']));
 
-                $('#monthly_children_birth_payment_year .payment_value').text(data['monthly_children_birth_payment_year']);
-                $('#monthly_children_birth_payment_year .payment_value_month').text(data['monthly_children_birth_payment_year_month']);
+                $('#monthly_children_birth_payment_year .payment_value').text(numberWithCommas(data['monthly_children_birth_payment_year']));
+                $('#monthly_children_birth_payment_year .payment_value_month').text(numberWithCommas(data['monthly_children_birth_payment_year_month']));
 
-                $('#children_inactivity .payment_value').text(data['children_inactivity']);
-                $('#children_inactivity .payment_value_month').text(data['children_inactivity_month']);
+                $('#children_inactivity .payment_value').text(numberWithCommas(data['children_inactivity']));
+                $('#children_inactivity .payment_value_month').text(numberWithCommas(data['children_inactivity_month']));
 
-                $('#children_activity .payment_value').text(data['children_activity']);
-                $('#children_activity .payment_value_month').text(data['children_activity_month']);
+                $('#children_activity .payment_value').text(numberWithCommas(data['children_activity']));
+                $('#children_activity .payment_value_month').text(numberWithCommas(data['children_activity_month']));
 
-                $('#children_nutrition .payment_value').text(data['children_nutrition']);
-                $('#children_nutrition .payment_value_month').text(data['children_nutrition_month']);
+                $('#children_nutrition .payment_value').text(numberWithCommas(data['children_nutrition']));
+                $('#children_nutrition .payment_value_month').text(numberWithCommas(data['children_nutrition_month']));
 
-                $('#children_monthly .payment_value').text(data['children_monthly']);
-                $('#children_monthly .payment_value_month').text(data['children_monthly_month']);
+                $('#children_monthly .payment_value').text(numberWithCommas(data['children_monthly']));
+                $('#children_monthly .payment_value_month').text(numberWithCommas(data['children_monthly_month']));
 
-                $('#children_hc .payment_value').text(data['children_hc']);
-                $('#children_hc .payment_value_month').text(data['children_hc_month']);
+                $('#children_hc .payment_value').text(numberWithCommas(data['children_hc']));
+                $('#children_hc .payment_value_month').text(numberWithCommas(data['children_hc_month']));
 
-                $('#children_social_month .payment_value').text(data['children_social_month']);
-                $('#children_social_month .payment_value_month').text(data['children_social_month_month']);
+                $('#children_social_month .payment_value').text(numberWithCommas(data['children_social_month']));
+                $('#children_social_month .payment_value_month').text(numberWithCommas(data['children_social_month_month']));
 
                 const childrenPaymentsMonth = data['monthly_children_payment_year_month'] + data['maternity_leave_month'] + data['monthly_children_birth_payment_year_month']
                                                 + data['children_inactivity_month'] + data['children_activity_month'] + data['children_nutrition_month']
@@ -508,75 +508,75 @@ $(document).ready(function() {
                                         + data['children_inactivity'] + data['children_activity'] + data['children_nutrition']
                                         + data['children_monthly'] + data['children_hc'] + data['children_social_month'];
 
-                $('#children_payments .payment_value_header').text(childrenPayments);
-                $('#children_payments .payment_value_month_header').text(childrenPaymentsMonth);
+                $('#children_payments .payment_value_header').text(numberWithCommas(childrenPayments));
+                $('#children_payments .payment_value_month_header').text(numberWithCommas(childrenPaymentsMonth));
 
-                $('#child_birth .payment_value').text(data['child_birth']);
-                $('#child_birth_mother_price .payment_value').text(data['child_birth_mother_price']);
-                $('#child_birth_regional .payment_value').text(data['child_birth_regional']);
-                $('#covid .payment_value').text(data['covid']);
-                $('#child_payment_beginning_school_year .payment_value').text(data['child_payment_beginning_school_year']);
-                $('#child_easter .payment_value').text(data['child_easter']);
-                $('#children_social_contract .payment_value').text(data['children_social_contract']);
-                $('#child_twins_two .payment_value').text(data['child_twins_two']);
-                $('#child_twins_three .payment_value').text(data['child_twins_three']);
+                $('#child_birth .payment_value').text(numberWithCommas(data['child_birth']));
+                $('#child_birth_mother_price .payment_value').text(numberWithCommas(data['child_birth_mother_price']));
+                $('#child_birth_regional .payment_value').text(numberWithCommas(data['child_birth_regional']));
+                $('#covid .payment_value').text(numberWithCommas(data['covid']));
+                $('#child_payment_beginning_school_year .payment_value').text(numberWithCommas(data['child_payment_beginning_school_year']));
+                $('#child_easter .payment_value').text(numberWithCommas(data['child_easter']));
+                $('#children_social_contract .payment_value').text(numberWithCommas(data['children_social_contract']));
+                $('#child_twins_two .payment_value').text(numberWithCommas(data['child_twins_two']));
+                $('#child_twins_three .payment_value').text(numberWithCommas(data['child_twins_three']));
 
                 const childrenPaymentsOnce = data['child_birth'] + data['child_birth_mother_price'] + data['child_birth_regional']
                     + data['covid'] + data['child_payment_beginning_school_year'] + data['child_easter']
                     + data['children_social_contract'] + data['child_twins_two'] + data['child_twins_three'];
-                $('#children_payments_once .payment_value_header').text(childrenPaymentsOnce);
+                $('#children_payments_once .payment_value_header').text(numberWithCommas(childrenPaymentsOnce));
 
 
-                $('#family_student_payment .payment_value').text(data['family_student_payment']);
-                $('#family_student_payment .payment_value_month').text(data['family_student_payment_month']);
+                $('#family_student_payment .payment_value').text(numberWithCommas(data['family_student_payment']));
+                $('#family_student_payment .payment_value_month').text(numberWithCommas(data['family_student_payment_month']));
 
-                $('#family_disabled_child_payment_pension_benefit .payment_value').text(data['family_disabled_child_payment_pension_benefit']);
-                $('#family_disabled_child_payment_pension_benefit .payment_value_month').text(data['family_disabled_child_payment_pension_benefit_month']);
+                $('#family_disabled_child_payment_pension_benefit .payment_value').text(numberWithCommas(data['family_disabled_child_payment_pension_benefit']));
+                $('#family_disabled_child_payment_pension_benefit .payment_value_month').text(numberWithCommas(data['family_disabled_child_payment_pension_benefit_month']));
 
-                $('#family_disabled_child_payment_hc .payment_value').text(data['family_disabled_child_payment_hc']);
-                $('#family_disabled_child_payment_hc .payment_value_month').text(data['family_disabled_child_payment_hc_month']);
+                $('#family_disabled_child_payment_hc .payment_value').text(numberWithCommas(data['family_disabled_child_payment_hc']));
+                $('#family_disabled_child_payment_hc .payment_value_month').text(numberWithCommas(data['family_disabled_child_payment_hc_month']));
 
-                $('#family_disabled_child_payment_status .payment_value').text(data['family_disabled_child_payment_status']);
-                $('#family_disabled_child_payment_status .payment_value_month').text(data['family_disabled_child_payment_status_month']);
-                $('#family_disabled_child_payment_care .payment_value').text(data['family_disabled_child_payment_care']);
-                $('#family_disabled_child_payment_care .payment_value_month').text(data['family_disabled_child_payment_care_month']);
-                $('#family_disabled_child_payment_month .payment_value').text(data['family_disabled_child_payment_month']);
-                $('#family_disabled_child_payment_month .payment_value_month').text(data['family_disabled_child_payment_month_month']);
+                $('#family_disabled_child_payment_status .payment_value').text(numberWithCommas(data['family_disabled_child_payment_status']));
+                $('#family_disabled_child_payment_status .payment_value_month').text(numberWithCommas(data['family_disabled_child_payment_status_month']));;
+                $('#family_disabled_child_payment_care .payment_value').text(numberWithCommas(data['family_disabled_child_payment_care']));
+                $('#family_disabled_child_payment_care .payment_value_month').text(numberWithCommas(data['family_disabled_child_payment_care_month']));
+                $('#family_disabled_child_payment_month .payment_value').text(numberWithCommas(data['family_disabled_child_payment_month']));
+                $('#family_disabled_child_payment_month .payment_value_month').text(numberWithCommas(data['family_disabled_child_payment_month_month']));
 
-                $('#family_disabled_payment_pension_benefit .payment_value').text(data['family_disabled_payment_pension_benefit']);
-                $('#family_disabled_payment_pension_benefit .payment_value_month').text(data['family_disabled_payment_pension_benefit_month']);
-                $('#family_disabled_payment_hc .payment_value').text(data['family_disabled_payment_hc']);
-                $('#family_disabled_payment_hc .payment_value_month').text(data['family_disabled_payment_hc_month']);
-                $('#family_disabled_payment_status .payment_value').text(data['family_disabled_payment_status']);
-                $('#family_disabled_payment_status .payment_value_month').text(data['family_disabled_payment_status_month']);
+                $('#family_disabled_payment_pension_benefit .payment_value').text(numberWithCommas(data['family_disabled_payment_pension_benefit']));
+                $('#family_disabled_payment_pension_benefit .payment_value_month').text(numberWithCommas(data['family_disabled_payment_pension_benefit_month']));
+                $('#family_disabled_payment_hc .payment_value').text(numberWithCommas(data['family_disabled_payment_hc']));
+                $('#family_disabled_payment_hc .payment_value_month').text(numberWithCommas(data['family_disabled_payment_hc_month']));
+                $('#family_disabled_payment_status .payment_value').text(numberWithCommas(data['family_disabled_payment_status']));
+                $('#family_disabled_payment_status .payment_value_month').text(numberWithCommas(data['family_disabled_payment_status_month']));
 
-                $('#family_veteran_payment_pension_benefit .payment_value').text(data['family_veteran_payment_pension_benefit']);
-                $('#family_veteran_payment_pension_benefit .payment_value_month').text(data['family_veteran_payment_pension_benefit_month']);
-                $('#family_veteran_payment_status .payment_value').text(data['family_veteran_payment_status']);
-                $('#family_veteran_payment_status .payment_value_month').text(data['family_veteran_payment_status_month']);
-                $('#family_veteran_payment_hc .payment_value').text(data['family_veteran_payment_hc']);
-                $('#family_veteran_payment_hc .payment_value_month').text(data['family_veteran_payment_hc_month']);
+                $('#family_veteran_payment_pension_benefit .payment_value').text(numberWithCommas(data['family_veteran_payment_pension_benefit']));
+                $('#family_veteran_payment_pension_benefit .payment_value_month').text(numberWithCommas(data['family_veteran_payment_pension_benefit_month']));
+                $('#family_veteran_payment_status .payment_value').text(numberWithCommas(data['family_veteran_payment_status']));
+                $('#family_veteran_payment_status .payment_value_month').text(numberWithCommas(data['family_veteran_payment_status_month']));
+                $('#family_veteran_payment_hc .payment_value').text(numberWithCommas(data['family_veteran_payment_hc']));
+                $('#family_veteran_payment_hc .payment_value_month').text(numberWithCommas(data['family_veteran_payment_hc_month']));
 
-                $('#family_war_veteran_payment_pension_benefit .payment_value').text(data['family_war_veteran_payment_pension_benefit']);
-                $('#family_war_veteran_payment_pension_benefit .payment_value_month').text(data['family_war_veteran_payment_pension_benefit_month']);
-                $('#family_war_veteran_payment_status .payment_value').text(data['family_war_veteran_payment_status']);
-                $('#family_war_veteran_payment_status .payment_value_month').text(data['family_war_veteran_payment_status_month']);
-                $('#family_war_veteran_payment_disabled .payment_value').text(data['family_war_veteran_payment_disabled']);
-                $('#family_war_veteran_payment_disabled .payment_value_month').text(data['family_war_veteran_payment_disabled_month']);
-                $('#family_war_veteran_payment_plus .payment_value').text(data['family_war_veteran_payment_plus']);
-                $('#family_war_veteran_payment_plus .payment_value_month').text(data['family_war_veteran_payment_plus_month']);
-                $('#family_war_veteran_payment_hc .payment_value').text(data['family_war_veteran_payment_hc']);
-                $('#family_war_veteran_payment_hc .payment_value_month').text(data['family_war_veteran_payment_hc_month']);
+                $('#family_war_veteran_payment_pension_benefit .payment_value').text(numberWithCommas(data['family_war_veteran_payment_pension_benefit']));
+                $('#family_war_veteran_payment_pension_benefit .payment_value_month').text(numberWithCommas(data['family_war_veteran_payment_pension_benefit_month']));
+                $('#family_war_veteran_payment_status .payment_value').text(numberWithCommas(data['family_war_veteran_payment_status']));
+                $('#family_war_veteran_payment_status .payment_value_month').text(numberWithCommas(data['family_war_veteran_payment_status_month']));
+                $('#family_war_veteran_payment_disabled .payment_value').text(numberWithCommas(data['family_war_veteran_payment_disabled']));
+                $('#family_war_veteran_payment_disabled .payment_value_month').text(numberWithCommas(data['family_war_veteran_payment_disabled_month']));
+                $('#family_war_veteran_payment_plus .payment_value').text(numberWithCommas(data['family_war_veteran_payment_plus']));
+                $('#family_war_veteran_payment_plus .payment_value_month').text(numberWithCommas(data['family_war_veteran_payment_plus_month']));
+                $('#family_war_veteran_payment_hc .payment_value').text(numberWithCommas(data['family_war_veteran_payment_hc']));
+                $('#family_war_veteran_payment_hc .payment_value_month').text(numberWithCommas(data['family_war_veteran_payment_hc_month']));
 
-                $('#family_so_veteran_payment_pension_benefit .payment_value').text(data['family_so_veteran_payment_pension_benefit']);
-                $('#family_so_veteran_payment_pension_benefit .payment_value_month').text(data['family_so_veteran_payment_pension_benefit_month']);
-                $('#family_so_veteran_payment_status .payment_value').text(data['family_so_veteran_payment_status']);
-                $('#family_so_veteran_payment_status .payment_value_month').text(data['family_so_veteran_payment_status_month']);
+                $('#family_so_veteran_payment_pension_benefit .payment_value').text(numberWithCommas(data['family_so_veteran_payment_pension_benefit']));
+                $('#family_so_veteran_payment_pension_benefit .payment_value_month').text(numberWithCommas(data['family_so_veteran_payment_pension_benefit_month']));
+                $('#family_so_veteran_payment_status .payment_value').text(numberWithCommas(data['family_so_veteran_payment_status']));
+                $('#family_so_veteran_payment_status .payment_value_month').text(numberWithCommas(data['family_so_veteran_payment_status_month']));
 
-                $('#family_retired_payment_pension_benefit .payment_value').text(data['family_retired_payment_pension_benefit']);
-                $('#family_retired_payment_pension_benefit .payment_value_month').text(data['family_retired_payment_pension_benefit_month']);
-                $('#family_retired_payment_travel .payment_value').text(data['family_retired_payment_travel']);
-                $('#family_retired_payment_travel .payment_value_month').text(data['family_retired_payment_travel_month']);
+                $('#family_retired_payment_pension_benefit .payment_value').text(numberWithCommas(data['family_retired_payment_pension_benefit']));
+                $('#family_retired_payment_pension_benefit .payment_value_month').text(numberWithCommas(data['family_retired_payment_pension_benefit_month']));
+                $('#family_retired_payment_travel .payment_value').text(numberWithCommas(data['family_retired_payment_travel']));
+                $('#family_retired_payment_travel .payment_value_month').text(numberWithCommas(data['family_retired_payment_travel_month']));
 
                 const socPaymentsOption = data['family_student_payment'] + data['family_disabled_child_payment_pension_benefit'] + data['family_disabled_child_payment_hc']
                                             + data['family_disabled_child_payment_status'] + data['family_disabled_child_payment_care'] + data['family_disabled_child_payment_month']
@@ -594,28 +594,28 @@ $(document).ready(function() {
                                             + data['family_war_veteran_payment_plus_month'] + data['family_war_veteran_payment_hc_month'] + data['family_so_veteran_payment_pension_benefit_month']
                                             + data['family_so_veteran_payment_status_month'] + data['family_retired_payment_pension_benefit_month'] + data['family_retired_payment_travel_month'];
 
-                $('#soc_payments_option .payment_value_header').text(socPaymentsOption);
-                $('#soc_payments_option .payment_value_month_header').text(socPaymentsOptionMonth);
+                $('#soc_payments_option .payment_value_header').text(numberWithCommas(socPaymentsOption));
+                $('#soc_payments_option .payment_value_month_header').text(numberWithCommas(socPaymentsOptionMonth));
 
 
-                $('#healthcare .payment_value').text(data['healthcare']);
-                $('#healthcare_all .payment_value_header').text(data['healthcare']);
+                $('#healthcare .payment_value').text(numberWithCommas(data['healthcare']));
+                $('#healthcare_all .payment_value_header').text(numberWithCommas(data['healthcare']));
 
 
-                $('#education_kindergarden .payment_value').text(data['education_kindergarden']);
-                $('#education_school .payment_value').text(data['education_school']);
-                $('#education_ptu .payment_value').text(data['education_ptu']);
-                $('#education_vuz .payment_value').text(data['education_vuz']);
+                $('#education_kindergarden .payment_value').text(numberWithCommas(data['education_kindergarden']));
+                $('#education_school .payment_value').text(numberWithCommas(data['education_school']));
+                $('#education_ptu .payment_value').text(numberWithCommas(data['education_ptu']));
+                $('#education_vuz .payment_value').text(numberWithCommas(data['education_vuz']));
 
 
-                $('#unemployment .payment_value').text(data['unemployment']);
-                $('#unemployment .payment_value_month').text(data['unemployment_month']);
+                $('#unemployment .payment_value').text(numberWithCommas(data['unemployment']));
+                $('#unemployment .payment_value_month').text(numberWithCommas(data['unemployment_month']));
 
-                $('#unemployment_children_payment .payment_value').text(data['unemployment_children_payment']);
-                $('#unemployment_children_payment .payment_value_month').text(data['unemployment_children_payment_month']);
+                $('#unemployment_children_payment .payment_value').text(numberWithCommas(data['unemployment_children_payment']));
+                $('#unemployment_children_payment .payment_value_month').text(numberWithCommas(data['unemployment_children_payment_month']));
 
                 const educationPayments = data['education_school'] + data['education_kindergarden'] + data['education_ptu'] + data['education_vuz'];
-                $('#education_payments .payment_value_header').text(educationPayments);
+                $('#education_payments .payment_value_header').text(numberWithCommas(educationPayments));
                 hideZeroes();
 
 
@@ -627,10 +627,10 @@ $(document).ready(function() {
                                     + data['family_veteran_payment'] + data['family_war_veteran_payment'] + data['family_so_veteran_payment'] + data['family_retired_payment']
                                     + data['unemployment'] + data['children_social_contract'] + data['unemployment_children_payment'];
 
-                $('.arm-soc-elements .overall_value_area').text(socOverallValue);
+                $('.arm-soc-elements .overall_value_area').text(numberWithCommas(socOverallValue));
 
                 let healthOverallValue = data['healthcare'];
-                $('.arm-health-elements .overall_value_area').text(healthOverallValue);
+                $('.arm-health-elements .overall_value_area').text(numberWithCommas(healthOverallValue));
 
                 let eduOverallValue = data['education_kindergarden'] + data['education_school'] + data['education_ptu'] + data['education_vuz'];
                 $('.arm-edu-elements .overall_value_area').text(eduOverallValue);
@@ -944,3 +944,6 @@ function isNumberKey(evt)
     return true;
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
