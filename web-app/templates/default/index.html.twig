@@ -4,11 +4,10 @@
 
 {% block body %}
     <div class="arm-input-data-wrapper">
-        <div class="d-flex align-items-center justify-content-center">
+        <div class="d-flex align-items-center justify-content-center flex-column">
             <div class="arm-header-main">
                 <div>
                     <div class="content-header d-flex align-items-center">Данные о гражданине и его семье</div>
-{#                    <div class="content-header d-flex align-items-center">Данные о гражданине и его семье <div class="reload">СБРОС</div></div>#}
                     <div class="arm-main">
 
 
@@ -151,50 +150,32 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="bd-highlight d-flex flex-column citizen-info-element arm-s-elem" id="tax-category">
-                                <div class="d-flex">
-                                    <div class="col-3">Налоги</div>
-                                </div>
-                                <div class="d-flex">
-                                    <div class="col-5 d-flex align-items-center" id="car-power">
-                                        <div class="col-6 input-group citizen-param-picker">
-                                            МОЩНОСТЬ А/М
-                                        </div>
-                                        <div class="col-6 input-group not_working d-flex align-items-center">
-                                            <input type="text" class="payment form-control" onkeypress="return isNumberKey(event)">
-                                            <div class="input-group-append d-flex align-items-center">
-                                                <span class="input-group-text">л/c</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-1"></div>
-                                    <div class="col-6 d-flex align-items-center" id="estate-tax">
-                                        <div class="col-7 input-group citizen-param-picker">
-                                            НАЛОГ НА ИМУЩЕСТВО (ВКЛЮЧАЯ ЗЕМЕЛЬНЫЙ НАЛОГ)
-                                        </div>
-                                        <div class="col-5 input-group is_lost_covid d-flex align-items-center">
-                                            <input type="text" class="payment form-control" onkeypress="return isNumberKey(event)">
-                                            <div class="input-group-append d-flex align-items-center">
-                                                <span class="input-group-text">Р</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+{#                        <div class="citizen-info-element-calculate d-flex align-items-center justify-content-end">#}
+{#                            <div>#}
+{#                                <button type="submit" class="btn btn-primary">Рассчитать льготы</button>#}
+{#                            </div>#}
+{#                        </div>#}
+
                     </form>
                     </div>
                 </div>
+                <div class="citizen-info-element-calculate d-flex justify-content-end">
+                    <label class="btn btn-primary">
+                        Рассчитать льготы
+                    </label>
+                </div>
             </div>
-            <div class="arm-calculate">
+            <div class="container">
+                <div class="col-9"></div>
+                <div class="col-3">
+                </div>
             </div>
         </div>
+
     </div>
     <div class="arm-output-data-wrapper">
         <div class="d-flex align-items-center justify-content-center">
-            <div class="arm-input">
-            </div>
             <div class="arm-main-result arm-header-main">
                 <div class="row arm-row">
                     <div class="col-2 arm-navigation-wrap">
@@ -226,8 +207,21 @@
                     <div class="col-10 arm-content">
                         <div class="arm-content-inner arm-soc-elements arm-element">
                             <h2 class="arm-content-title">Выплаты в социальной сфере</h2>
-
                             <div class="arm-open-wrap-2">
+                                <div class="row sp-row">
+                                    <div class="col-5 arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-3">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-2 text-right arm-open-wrap-2-inner">
+                                        ₽/мес
+                                    </div>
+                                    <div class="col-2 text-right arm-open-wrap-2-inner">
+                                        ₽/год
+                                    </div>
+                                </div>
                                 <div class="row sp-row" id="children_payments">
                                     <div class="col-8">
                                         <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
@@ -406,24 +400,22 @@
                                             <span class="text-nowrap payment_value"></span>
                                         </div>
                                     </div>
-                                    <div class="row sp-row">
-                                        <div class="col-5 arm-open-wrap-2-inner">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-3">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/мес
-                                        </div>
-                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/год
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="arm-open-wrap-2">
+                                <div class="row sp-row">
+                                    <div class="col-8 arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-2 text-right arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-2 text-right arm-open-wrap-2-inner">
+                                        ₽/год
+                                    </div>
+                                </div>
                                 <div class="row sp-row" id="children_payments_once">
                                     <div class="col-8">
                                         <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
@@ -601,21 +593,22 @@
                                             <span class="text-nowrap payment_value"></span>
                                         </div>
                                     </div>
-                                    <div class="row sp-row">
-                                        <div class="col-8 arm-open-wrap-2-inner">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/год
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
 
                             <div class="arm-open-wrap-2">
+                                <div class="row sp-row">
+                                    <div class="col-8 arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-2 text-right arm-open-wrap-2-inner">
+                                        ₽/мес
+                                    </div>
+                                    <div class="col-2 text-right arm-open-wrap-2-inner">
+                                        ₽/год
+                                    </div>
+                                </div>
                                 <div class="row sp-row" id="soc_payments_option">
                                     <div class="col-8">
                                         <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
@@ -1046,17 +1039,7 @@
                                             <span class="text-nowrap payment_value"></span>
                                         </div>
                                     </div>
-                                    <div class="row sp-row">
-                                        <div class="col-8 arm-open-wrap-2-inner">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/мес
-                                        </div>
-                                        <div class="col-2 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/год
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -1065,6 +1048,17 @@
                             <h2 class="arm-content-title">Расходы на здравоохранение</h2>
 
                             <div class="arm-open-wrap-2">
+                                <div class="row sp-row">
+                                    <div class="col-6 arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-3 text-right arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-3 text-right arm-open-wrap-2-inner">
+                                        ₽/год
+                                    </div>
+                                </div>
                                 <div class="row sp-row" id="healthcare_all">
                                     <div class="col-6">
                                         <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
@@ -1093,17 +1087,7 @@
                                             <span class="text-nowrap payment_value"></span>
                                         </div>
                                     </div>
-                                    <div class="row sp-row">
-                                        <div class="col-6 arm-open-wrap-2-inner">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/год
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -1111,6 +1095,17 @@
                             <h2 class="arm-content-title">Расходы на образование</h2>
 
                             <div class="arm-open-wrap-2">
+                                <div class="row sp-row">
+                                    <div class="col-6 arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-3 text-right arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-3 text-right arm-open-wrap-2-inner">
+                                        ₽/год
+                                    </div>
+                                </div>
                                 <div class="row sp-row" id="education_payments">
                                     <div class="col-6">
                                         <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
@@ -1178,17 +1173,6 @@
                                             <span class="text-nowrap payment_value"></span>
                                         </div>
                                     </div>
-                                    <div class="row sp-row">
-                                        <div class="col-6 arm-open-wrap-2-inner">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/год
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1196,6 +1180,17 @@
                             <h2 class="arm-content-title">Расходы на культуру и спорт</h2>
 
                             <div class="arm-open-wrap-2">
+                                <div class="row sp-row">
+                                    <div class="col-6 arm-open-wrap-2-inner">
+                                        &nbsp;
+                                    </div>
+                                    <div class="col-3 text-right arm-open-wrap-2-inner">
+
+                                    </div>
+                                    <div class="col-3 text-right arm-open-wrap-2-inner">
+                                        ₽/год
+                                    </div>
+                                </div>
                                 <div class="row sp-row" id="sport_payments">
                                     <div class="col-6">
                                         <div class="arm-open-wrap-2-title arm-open-wrap-2-inner">
@@ -1352,28 +1347,14 @@
                                             <span class="text-nowrap payment_value">269530</span>
                                         </div>
                                     </div>
-                                    <div class="row sp-row">
-                                        <div class="col-6 arm-open-wrap-2-inner">
-                                            &nbsp;
-                                        </div>
-                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
 
-                                        </div>
-                                        <div class="col-3 text-right arm-open-wrap-2-inner arm-small-text">
-                                            ₽/год
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="arm-result">
-{#                            <div class="arm-s-h-2 arm-result-show-hide"></div>#}
                             <div class="arm-chart-wrap">
                                 <div class="row" style="width: 80%; text-align: center">
-                                    <div class="col-6 arm-color-1">
-                                        Налоги: <span class="text-nowrap arm-result-value-tax"></span> <span class="small-text">₽/год</span>
-                                    </div>
-                                    <div class="col-6 arm-color-2">
+                                    <div class="col-12 arm-color-2">
                                         Затраты государства: <span class="text-nowrap arm-result-value-overall"></span> <span class="small-text">₽/год</span>
                                     </div>
                                 </div>
@@ -1382,21 +1363,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="citizen-info-element-return text-right arm-input">
+                                <label class="btn btn-primary col-2">
+                                    Вернуться к анкете
+                                </label>
+                            </div>
                         </div>
-
-{#                        <div class="arm-content-inner">#}
-{#                            <div class="arm-result d-flex flex-column">#}
-{#                                <div class="arm-result-value container row">#}
-{#                                    <div class="col-6" style="color: #338cca"><span class="arm-result-value-title">Налоги: </span><span class="arm-result-value-tax"></span><span class="currency">₽/год</span></div>#}
-{#                                    <div class="col-6" style="color: #5eca33"><span class="arm-result-value-title">Затраты государства: </span><span class="arm-result-value-overall"></span><span class="currency">₽/год</span></div>#}
-{#                                </div>#}
-{#                                <div class="arm-chart-wrap">#}
-{#                                    <div class="modal-content-chart">#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-
                     </div>
                 </div>
             </div>
